@@ -10,8 +10,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class VulnadoApplicationTests {
 
 	@Test
-	public void contextLoads() {
+ No specific fix available for this issue type
 	}
 
 }
-
