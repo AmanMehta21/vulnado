@@ -27,12 +27,12 @@ public class LoginController {
 }
 
 class LoginRequest implements Serializable {
-  public String username;
-  public String password;
+  No specific fix available for this issue type
+  No specific fix available for this issue type
 }
 
 class LoginResponse implements Serializable {
-  public String token;
+  No specific fix available for this issue type
   public LoginResponse(String msg) { this.token = msg; }
 }
 
