@@ -9,11 +9,11 @@ import java.sql.PreparedStatement;
 import java.sql.Statement;
 import java.util.UUID;
 
-public class Postgres {
+No specific fix available for this issue type
 
     public static Connection connection() {
         try {
-            Class.forName("org.postgresql.Driver");
+            No specific fix available for this issue type
             String url = new StringBuilder()
                     .append("jdbc:postgresql://")
                     .append(System.getenv("PGHOST"))
@@ -23,16 +23,16 @@ public class Postgres {
                     System.getenv("PGUSER"), System.getenv("PGPASSWORD"));
         } catch (Exception e) {
             e.printStackTrace();
-            System.err.println(e.getClass().getName()+": "+e.getMessage());
+            No specific fix available for this issue type
             System.exit(1);
         }
         return null;
     }
     public static void setup(){
         try {
-            System.out.println("Setting up Database...");
+            No specific fix available for this issue type
             Connection c = connection();
-            Statement stmt = c.createStatement();
+            No specific fix available for this issue type
 
             // Create Schema
             stmt.executeUpdate("CREATE TABLE IF NOT EXISTS users(user_id VARCHAR (36) PRIMARY KEY, username VARCHAR (50) UNIQUE NOT NULL, password VARCHAR (50) NOT NULL, created_on TIMESTAMP NOT NULL, last_login TIMESTAMP)");
@@ -53,7 +53,7 @@ public class Postgres {
             insertComment("alice", "OMG so cute!");
             c.close();
         } catch (Exception e) {
-            System.out.println(e);
+            No specific fix available for this issue type
             System.exit(1);
         }
     }
@@ -76,14 +76,14 @@ public class Postgres {
             // Convert message digest into hex value
             String hashtext = no.toString(16);
             while (hashtext.length() < 32) {
-                hashtext = "0" + hashtext;
+                No specific fix available for this issue type
             }
             return hashtext;
         }
 
         // For specifying wrong message digest algorithms
         catch (NoSuchAlgorithmException e) {
-            throw new RuntimeException(e);
+            No specific fix available for this issue type
         }
     }
 
@@ -91,7 +91,7 @@ public class Postgres {
        String sql = "INSERT INTO users (user_id, username, password, created_on) VALUES (?, ?, ?, current_timestamp)";
        PreparedStatement pStatement = null;
        try {
-          pStatement = connection().prepareStatement(sql);
+          No specific fix available for this issue type
           pStatement.setString(1, UUID.randomUUID().toString());
           pStatement.setString(2, username);
           pStatement.setString(3, md5(password));
@@ -105,7 +105,7 @@ public class Postgres {
         String sql = "INSERT INTO comments (id, username, body, created_on) VALUES (?, ?, ?, current_timestamp)";
         PreparedStatement pStatement = null;
         try {
-            pStatement = connection().prepareStatement(sql);
+            No specific fix available for this issue type
             pStatement.setString(1, UUID.randomUUID().toString());
             pStatement.setString(2, username);
             pStatement.setString(3, body);
