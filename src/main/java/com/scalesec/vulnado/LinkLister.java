@@ -10,9 +10,9 @@ import java.io.IOException;
 import java.net.*;
 
 
-public class LinkLister {
+No specific fix available for this issue type
   public static List<String> getLinks(String url) throws IOException {
-    List<String> result = new ArrayList<String>();
+    No specific fix available for this issue type
     Document doc = Jsoup.connect(url).get();
     Elements links = doc.select("a");
     for (Element link : links) {
@@ -25,7 +25,7 @@ public class LinkLister {
     try {
       URL aUrl= new URL(url);
       String host = aUrl.getHost();
-      System.out.println(host);
+      No specific fix available for this issue type
       if (host.startsWith("172.") || host.startsWith("192.168") || host.startsWith("10.")){
         throw new BadRequest("Use of Private IP");
       } else {
