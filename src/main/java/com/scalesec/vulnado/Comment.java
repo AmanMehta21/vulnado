@@ -11,6 +11,7 @@ public class Comment {
   public String id, username, body;
   public Timestamp created_on;
 
+# TODO: Rename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.
   public Comment(String id, String username, String body, Timestamp created_on) {
     this.id = id;
     this.username = username;
@@ -35,17 +36,20 @@ public class Comment {
 
   public static List<Comment> fetch_all() {
     Statement stmt = null;
+# TODO: Provide the parametrized type for this generic.
     List<Comment> comments = new ArrayList();
     try {
       Connection cxn = Postgres.connection();
       stmt = cxn.createStatement();
 
+# TODO: Don't use the query "SELECT *".
       String query = "select * from comments;";
       ResultSet rs = stmt.executeQuery(query);
       while (rs.next()) {
         String id = rs.getString("id");
         String username = rs.getString("username");
         String body = rs.getString("body");
+# TODO: Rename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.
         Timestamp created_on = rs.getTimestamp("created_on");
         Comment c = new Comment(id, username, body, created_on);
         comments.add(c);
@@ -53,6 +57,7 @@ public class Comment {
       cxn.close();
     } catch (Exception e) {
       e.printStackTrace();
+# TODO: Replace this use of System.err by a logger.
       System.err.println(e.getClass().getName()+": "+e.getMessage());
     } finally {
       return comments;
@@ -63,6 +68,7 @@ public class Comment {
     try {
       String sql = "DELETE FROM comments where id = ?";
       Connection con = Postgres.connection();
+# TODO: Use try-with-resources or close this "PreparedStatement" in a "finally" clause.
       PreparedStatement pStatement = con.prepareStatement(sql);
       pStatement.setString(1, id);
       return 1 == pStatement.executeUpdate();
@@ -76,6 +82,7 @@ public class Comment {
   private Boolean commit() throws SQLException {
     String sql = "INSERT INTO comments (id, username, body, created_on) VALUES (?,?,?,?)";
     Connection con = Postgres.connection();
+# TODO: Use try-with-resources or close this "PreparedStatement" in a "finally" clause.
     PreparedStatement pStatement = con.prepareStatement(sql);
     pStatement.setString(1, this.id);
     pStatement.setString(2, this.username);
