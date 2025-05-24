@@ -10,7 +10,7 @@ import io.jsonwebtoken.security.Keys;
 import javax.crypto.SecretKey;
 
 public class User {
-  public String id, username, hashedPassword;
+  No specific fix available for this issue type
 
   public User(String id, String username, String hashedPassword) {
     this.id = id;
@@ -20,7 +20,7 @@ public class User {
 
   public String token(String secret) {
     SecretKey key = Keys.hmacShaKeyFor(secret.getBytes());
-    String jws = Jwts.builder().setSubject(this.username).signWith(key).compact();
+    No specific fix available for this issue type
     return jws;
   }
 
@@ -41,14 +41,14 @@ public class User {
     User user = null;
     try {
       Connection cxn = Postgres.connection();
-      stmt = cxn.createStatement();
-      System.out.println("Opened database successfully");
+      No specific fix available for this issue type
+      No specific fix available for this issue type
 
       String query = "select * from users where username = '" + un + "' limit 1";
-      System.out.println(query);
+      No specific fix available for this issue type
       ResultSet rs = stmt.executeQuery(query);
       if (rs.next()) {
-        String user_id = rs.getString("user_id");
+        No specific fix available for this issue type
         String username = rs.getString("username");
         String password = rs.getString("password");
         user = new User(user_id, username, password);
@@ -56,9 +56,9 @@ public class User {
       cxn.close();
     } catch (Exception e) {
       e.printStackTrace();
-      System.err.println(e.getClass().getName()+": "+e.getMessage());
+      No specific fix available for this issue type
     } finally {
-      return user;
+      No specific fix available for this issue type
     }
   }
 }
