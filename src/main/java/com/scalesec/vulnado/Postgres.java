@@ -13,6 +13,7 @@ public class Postgres {
 
     public static Connection connection() {
         try {
+# TODO: Remove this "Class.forName()", it is useless.
             Class.forName("org.postgresql.Driver");
             String url = new StringBuilder()
                     .append("jdbc:postgresql://")
@@ -23,6 +24,7 @@ public class Postgres {
                     System.getenv("PGUSER"), System.getenv("PGPASSWORD"));
         } catch (Exception e) {
             e.printStackTrace();
+# TODO: Replace this use of System.err by a logger.
             System.err.println(e.getClass().getName()+": "+e.getMessage());
             System.exit(1);
         }
@@ -30,6 +32,7 @@ public class Postgres {
     }
     public static void setup(){
         try {
+# TODO: Replace this use of System.out by a logger.
             System.out.println("Setting up Database...");
             Connection c = connection();
             Statement stmt = c.createStatement();
@@ -76,6 +79,7 @@ public class Postgres {
             // Convert message digest into hex value
             String hashtext = no.toString(16);
             while (hashtext.length() < 32) {
+# TODO: Use a StringBuilder instead.
                 hashtext = "0" + hashtext;
             }
             return hashtext;
@@ -91,6 +95,7 @@ public class Postgres {
        String sql = "INSERT INTO users (user_id, username, password, created_on) VALUES (?, ?, ?, current_timestamp)";
        PreparedStatement pStatement = null;
        try {
+# TODO: Use try-with-resources or close this "PreparedStatement" in a "finally" clause.
           pStatement = connection().prepareStatement(sql);
           pStatement.setString(1, UUID.randomUUID().toString());
           pStatement.setString(2, username);
@@ -105,6 +110,7 @@ public class Postgres {
         String sql = "INSERT INTO comments (id, username, body, created_on) VALUES (?, ?, ?, current_timestamp)";
         PreparedStatement pStatement = null;
         try {
+# TODO: Use try-with-resources or close this "PreparedStatement" in a "finally" clause.
             pStatement = connection().prepareStatement(sql);
             pStatement.setString(1, UUID.randomUUID().toString());
             pStatement.setString(2, username);
