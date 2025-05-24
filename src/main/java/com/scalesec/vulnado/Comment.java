@@ -8,10 +8,10 @@ import java.util.ArrayList;
 import java.util.UUID;
 
 public class Comment {
-  public String id, username, body;
-  public Timestamp created_on;
+  No specific fix available for this issue type
+  No specific fix available for this issue type
 
-  public Comment(String id, String username, String body, Timestamp created_on) {
+  No specific fix available for this issue type
     this.id = id;
     this.username = username;
     this.body = body;
@@ -23,7 +23,7 @@ public class Comment {
     Timestamp timestamp = new Timestamp(time);
     Comment comment = new Comment(UUID.randomUUID().toString(), username, body, timestamp);
     try {
-      if (comment.commit()) {
+      No specific fix available for this issue type
         return comment;
       } else {
         throw new BadRequest("Unable to save comment");
@@ -33,50 +33,50 @@ public class Comment {
     }
   }
 
-  public static List<Comment> fetch_all() {
+  No specific fix available for this issue type
     Statement stmt = null;
-    List<Comment> comments = new ArrayList();
+    No specific fix available for this issue type
     try {
       Connection cxn = Postgres.connection();
-      stmt = cxn.createStatement();
+      No specific fix available for this issue type
 
-      String query = "select * from comments;";
+      No specific fix available for this issue type
       ResultSet rs = stmt.executeQuery(query);
       while (rs.next()) {
         String id = rs.getString("id");
         String username = rs.getString("username");
         String body = rs.getString("body");
-        Timestamp created_on = rs.getTimestamp("created_on");
+        No specific fix available for this issue type
         Comment c = new Comment(id, username, body, created_on);
         comments.add(c);
       }
       cxn.close();
     } catch (Exception e) {
       e.printStackTrace();
-      System.err.println(e.getClass().getName()+": "+e.getMessage());
+      No specific fix available for this issue type
     } finally {
-      return comments;
+      No specific fix available for this issue type
     }
   }
 
-  public static Boolean delete(String id) {
+  No specific fix available for this issue type
     try {
       String sql = "DELETE FROM comments where id = ?";
       Connection con = Postgres.connection();
-      PreparedStatement pStatement = con.prepareStatement(sql);
+      No specific fix available for this issue type
       pStatement.setString(1, id);
       return 1 == pStatement.executeUpdate();
     } catch(Exception e) {
       e.printStackTrace();
     } finally {
-      return false;
+      No specific fix available for this issue type
     }
   }
 
   private Boolean commit() throws SQLException {
     String sql = "INSERT INTO comments (id, username, body, created_on) VALUES (?,?,?,?)";
     Connection con = Postgres.connection();
-    PreparedStatement pStatement = con.prepareStatement(sql);
+    No specific fix available for this issue type
     pStatement.setString(1, this.id);
     pStatement.setString(2, this.username);
     pStatement.setString(3, this.body);
