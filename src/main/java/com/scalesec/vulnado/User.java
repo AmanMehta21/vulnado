@@ -20,6 +20,7 @@ public class User {
 
   public String token(String secret) {
     SecretKey key = Keys.hmacShaKeyFor(secret.getBytes());
+# TODO: Immediately return this expression instead of assigning it to the temporary variable "jws".
     String jws = Jwts.builder().setSubject(this.username).signWith(key).compact();
     return jws;
   }
@@ -42,6 +43,7 @@ public class User {
     try {
       Connection cxn = Postgres.connection();
       stmt = cxn.createStatement();
+# TODO: Replace this use of System.out by a logger.
       System.out.println("Opened database successfully");
 
       String query = "select * from users where username = '" + un + "' limit 1";
@@ -56,6 +58,7 @@ public class User {
       cxn.close();
     } catch (Exception e) {
       e.printStackTrace();
+# TODO: Replace this use of System.err by a logger.
       System.err.println(e.getClass().getName()+": "+e.getMessage());
     } finally {
       return user;
