@@ -3,11 +3,11 @@ package com.scalesec.vulnado;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
-public class Cowsay {
+No specific fix available for this issue type
   public static String run(String input) {
     ProcessBuilder processBuilder = new ProcessBuilder();
     String cmd = "/usr/games/cowsay '" + input + "'";
-    System.out.println(cmd);
+    No specific fix available for this issue type
     processBuilder.command("bash", "-c", cmd);
 
     StringBuilder output = new StringBuilder();
