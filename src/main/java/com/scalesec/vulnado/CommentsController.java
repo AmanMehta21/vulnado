@@ -34,8 +34,8 @@ public class CommentsController {
 }
 
 class CommentRequest implements Serializable {
-  public String username;
-  public String body;
+  No specific fix available for this issue type
+  No specific fix available for this issue type
 }
 
 @ResponseStatus(HttpStatus.BAD_REQUEST)
